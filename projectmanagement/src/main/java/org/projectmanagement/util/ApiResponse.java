@@ -24,6 +24,8 @@ public class ApiResponse implements Serializable {
 
 	private List<Project> allProjects;
 
+	private String jwtToken;
+
 	private Project project;
 
 	private College college;
@@ -98,6 +100,14 @@ public class ApiResponse implements Serializable {
 
 	public void setErrorDesc(String errorDesc) {
 		this.errorDesc = errorDesc;
+	}
+
+	public String getJwtToken() {
+		return jwtToken;
+	}
+
+	public void setJwtToken(String jwtToken) {
+		this.jwtToken = jwtToken;
 	}
 
 }

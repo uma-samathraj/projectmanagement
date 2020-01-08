@@ -11,29 +11,6 @@ angular.module('pmApp').controller('UserController', ['$scope', 'UserService', f
     self.reset = reset;
  
  
-    fetchAllUsers();
- 
-    function fetchAllUsers(){
-        UserService.fetchAllUsers()
-            .then(
-            function(d) {
-                self.users = d;
-            },
-            function(errResponse){
-                console.error('Error while fetching Users');
-            }
-        );
-    }
- 
-    function createUser(user){
-        UserService.createUser(user)
-            .then(
-            fetchAllUsers,
-            function(errResponse){
-                console.error('Error while creating User');
-            }
-        );
-    }
  
     function updateUser(user, id){
         UserService.updateUser(user, id)

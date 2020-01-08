@@ -3,16 +3,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>ProjectManagement</title>
+<base href="/">
 </head>
 <body ng-app="pmApp">
+<ng-view autoscroll="true"></ng-view>
 </body>
 <script src="lib/popper.min.js"></script>
 <script src="lib/jquery.js"></script>
 <script src="lib/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/css/pm.css">
 <script src="lib/angular.min.js"></script>
 <script src="lib/angular-route.js"></script>
 <script src="./js/pm_module.js"></script>
 <script src="./js/config/routing_config.js"></script>
+<script src="./js/config/app_config.js"></script>
 <script src="lib/angular-route.js"></script>
+<script src="./js/controllers/login_controller.js"></script>
+<script src="./js/controllers/project_controller.js"></script>
+<script src="./js/controllers/user_controller.js"></script>
+<script src="./js/services/pm_services.js"></script>
+<script src="./js/services/user_service.js"></script>
 </html>

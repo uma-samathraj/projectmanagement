@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Bootstrap 4 Login/Register Form</title>
+</head>
+<body>
+	<div id="logreg-forms">
+		<form class="form-signin">
+			<h1 class="h3 mb-3 font-weight-normal" style="text-align: center">
+				Sign in</h1>
+			<p style="text-align: center"></p>
+			<input type="email" id="inputEmail" class="form-control"
+				placeholder="Email address" required="" autofocus="" ng-model="signInRequest.emailId"> <input
+				type="password" id="inputPassword" class="form-control"
+				placeholder="Password" required="" ng-model="signInRequest.password">
+			<button class="btn btn-success btn-block" type="submit" ng-click="signIn()">
+				<i class="fas fa-sign-in-alt"></i> Sign in
+			</button>
+			<!--  <a href="#" id="forgot_pswd">Forgot password?</a> -->
+			<hr>
+			<!-- <p>Don't have an account!</p>  -->
+			<button class="btn btn-primary btn-block" type="button"
+				id="btn-signup" ng-click="toggleSignUp()">
+				<i class="fas fa-user-plus"></i> Sign up New Account
+			</button>
+		</form>
+		<!-- <form action="/reset/password/" class="form-reset">
+                <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+                <a href="#" id="cancel_reset"><i class="fas fa-angle-left" ng-click="back()"></i> Back</a>
+            </form> -->
+		<form class="form-signup">
+			<h1 class="h3 mb-3 font-weight-normal" style="text-align: center">
+				Sign Up</h1>
+			<input type="text" id="user-name" class="form-control"
+				placeholder="Name" required="" autofocus="" ng-model="user.name"> 
+				
+				<input
+				type="email" id="user-email" class="form-control"
+				placeholder="Email address" required autofocus="" ng-model="user.mailId"> 
+				
+				<input
+				type="password" id="user-pass" class="form-control"
+				placeholder="Password" required autofocus=""  ng-model="user.password">  
+				
+				<select class="form-control"
+				required ng-model="user.userType" ng-options="t for t in userTypes"></select>
+				
+				<input
+				type="text" id="user-idNum" class="form-control"
+				placeholder="IdCardNum" required autofocus="" ng-model="user.idNum">
+				
+				<select placeholder="CollegeName" class="form-control" required ng-model="user.collegeName" ng-options="c for c in colleges"></select>
+				
+			<button class="btn btn-primary btn-block" type="submit"
+				ng-click="signUp()">
+				<i class="fas fa-user-plus"></i> Sign Up
+			</button>
+			<a href="#" id="cancel_signup" ng-click="back()"><i
+				class="fas fa-angle-left"></i> Back</a>
+		</form>
+		<br>
+
+	</div>
+
+</body>
+</html>

@@ -129,3 +129,11 @@ grant all privileges on database miniproject to uma;
 ALTER ROLE uma SUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
 
 
+Reference Links
+...............
+
+https://bootsnipp.com/snippets/GavAo  - for sign up and login page
+
+
+
+

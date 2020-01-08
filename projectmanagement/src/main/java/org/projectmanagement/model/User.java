@@ -22,8 +22,6 @@ public class User implements Serializable {
 
 	private String password;
 
-	private String userName;
-
 	private String mailId;
 
 	private String idNum;
@@ -56,13 +54,6 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
 
 	public String getMailId() {
 		return mailId;

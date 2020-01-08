@@ -7,7 +7,10 @@ function($routeProvider) {
 	}).when('/user', {
 		templateUrl : './html/user.html',
 		controller : 'UserController'
+	}).when('/login', {
+		templateUrl : './html/login.html',
+		controller : 'LoginController'
 	}).otherwise({
-		redirectTo: '/project'
+		redirectTo: '/login'
 	})
 } ]);
