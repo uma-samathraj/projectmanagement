@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.projectmanagement.model.College;
 import org.projectmanagement.model.Project;
+import org.projectmanagement.model.User;
 
 public class ApiResponse implements Serializable {
 
@@ -12,13 +13,26 @@ public class ApiResponse implements Serializable {
 
 	private boolean isSuccess;
 
-	private String sucessDesc;
+	private int responseCode;
+	
+	private String responseDesc;
 
-	private int sucessCode;
+	public String getResponseDesc() {
+		return responseDesc;
+	}
 
-	private String errorCode;
+	public void setResponseDesc(String responseDesc) {
+		this.responseDesc = responseDesc;
+	}
 
-	private String errorDesc;
+	public int getResponseCode() {
+		return responseCode;
+	}
+
+	public void setResponseCode(int responseCode) {
+		this.responseCode = responseCode;
+	}
+
 
 	private List<College> allColleges;
 
@@ -29,6 +43,16 @@ public class ApiResponse implements Serializable {
 	private Project project;
 
 	private College college;
+	
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public List<Project> getAllProjects() {
 		return allProjects;
@@ -70,37 +94,6 @@ public class ApiResponse implements Serializable {
 		this.isSuccess = isSuccess;
 	}
 
-	public String getSucessDesc() {
-		return sucessDesc;
-	}
-
-	public void setSucessDesc(String sucessDesc) {
-		this.sucessDesc = sucessDesc;
-	}
-
-	public int getSucessCode() {
-		return sucessCode;
-	}
-
-	public void setSucessCode(int sucessCode) {
-		this.sucessCode = sucessCode;
-	}
-
-	public String getErrorCode() {
-		return errorCode;
-	}
-
-	public void setErrorCode(String errorCode) {
-		this.errorCode = errorCode;
-	}
-
-	public String getErrorDesc() {
-		return errorDesc;
-	}
-
-	public void setErrorDesc(String errorDesc) {
-		this.errorDesc = errorDesc;
-	}
 
 	public String getJwtToken() {
 		return jwtToken;

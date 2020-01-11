@@ -2,6 +2,6 @@ package org.projectmanagement.model;
 
 public enum ProjectStatus {
 
-	Approved,Rejected,Completed,Selected
+	Approved,Rejected,Completed,Submitted
 	
 }

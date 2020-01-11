@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Project implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
@@ -22,9 +22,77 @@ public class Project implements Serializable {
 
 	private String description;
 
+	public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
+	}
+
 	private ProjectStatus status;
 	
+	private Result result;
+	
+	private String projectUrl;
+
+	public String getProjectUrl() {
+		return projectUrl;
+	}
+
+	public void setProjectUrl(String projectUrl) {
+		this.projectUrl = projectUrl;
+	}
+
+	private String studentIdNum;
+
+	public String getStudentIdNum() {
+		return studentIdNum;
+	}
+
+	public void setStudentIdNum(String studentIdNum) {
+		this.studentIdNum = studentIdNum;
+	}
+
+	public String getStudentName() {
+		return studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public Long getStudentMarks() {
+		return studentMarks;
+	}
+
+	public void setStudentMarks(Long studentMarks) {
+		this.studentMarks = studentMarks;
+	}
+
+	public String getCollegeName() {
+		return collegeName;
+	}
+
+	public void setCollegeName(String collegeName) {
+		this.collegeName = collegeName;
+	}
+
+	public String getStaffIdNum() {
+		return staffIdNum;
+	}
+
+	public void setStaffIdNum(String staffIdNum) {
+		this.staffIdNum = staffIdNum;
+	}
+
+	private String studentName;
+
+	private Long studentMarks;
+
 	private String collegeName;
+
+	private String staffIdNum;
 
 	public Long getId() {
 		return id;
@@ -57,15 +125,5 @@ public class Project implements Serializable {
 	public void setStatus(ProjectStatus status) {
 		this.status = status;
 	}
-
-	public String getCollegeName() {
-		return collegeName;
-	}
-
-	public void setCollegeName(String collegeName) {
-		this.collegeName = collegeName;
-	} 
-	
-	
 
 }
