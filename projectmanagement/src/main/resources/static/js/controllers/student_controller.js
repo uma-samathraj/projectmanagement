@@ -4,44 +4,46 @@ angular.module('pmApp').controller(
 
 			var REST_SERVICE_URI = 'http://localhost:8080/pm/project';
 			$scope.project = {};
-            $scope.user = JSON.parse(sessionStorage.user);
-			
-            $scope.init=function(){
-            	
-            	var data = {
-            			 id:$scope.user.idNum!=undefined?$scope.user.idNum:123
-            			};
+			$scope.user = JSON.parse(sessionStorage.user);
 
-            			var config = {
-            			 params: data,
-            			 headers : {'Accept' : 'application/json'}
-            			};
+			$scope.init = function() {
 
-            			$http.get(REST_SERVICE_URI+"/getproject", config).then(function(response) {
-            				
-            				if(response.data.responseCode===200){
-            					var project=response.data.project;
-            					if(project!=null){
-            						$scope.project =project; 
-            						console.log("success");
-            					}
-            				}
-            			 }, function(response) {
-            				 
-            				 console.log("failure");
-            		    	}
-            		);
-            	
-            }
-            
+				var data = {
+					id : $scope.user.idNum
+				};
+
+				var config = {
+					params : data,
+					headers : {
+						'Accept' : 'application/json'
+					}
+				};
+
+				$http.get(REST_SERVICE_URI + "/getproject", config).then(
+						function(response) {
+
+							if (response.data.responseCode === 200) {
+								var project = response.data.project;
+								if (project != null) {
+									$scope.project = project;
+									console.log("success");
+								}
+							}
+						}, function(response) {
+
+							console.log("failure");
+						});
+
+			}
+
 			$scope.callInitialSubmission = function() {
 				console.log("called callInitialSubmission");
 			}
 
-			$scope.submitProject = function() {
+			$scope.submitProject = function(status) {
 
-				$scope.project.status = "Submitted";
-				$scope.project.studentIdNum = $scope.user.idNum; 
+				$scope.project.status = status;
+				$scope.project.studentIdNum = $scope.user.idNum;
 				$scope.project.studentName = $scope.user.name;
 				$scope.project.collegeName = $scope.user.collegeName;
 				
@@ -52,8 +54,7 @@ angular.module('pmApp').controller(
 							console.log("POST-ing of data failed");
 						});
 			}
-			
-			
+
 			$scope.init();
 
 		});

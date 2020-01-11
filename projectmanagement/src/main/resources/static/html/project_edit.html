@@ -1,9 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-</body>
-</html>
+
+<div class="container">
+
+	<div class="modal-header">
+		<h3 class="modal-title">I'm a modal!</h3>
+	</div>
+	<div class="modal-body">
+
+		<form>
+			<div class="form-group">
+				<label for="Name">Project Name</label> <input type="text"
+					class="form-control form-wdth" id="projectname"
+					ng-model="project.name" ng-disabled="project.status=='Approved'">
+			</div>
+
+			<div class="form-group">
+				<label for="projectdesc">Project Description</label>
+				<textarea class="form-control heigh-width-auto" id="projectdesc"
+					ng-disabled="project.status=='Approved'"
+					ng-model="project.description"></textarea>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary mb-2"
+					ng-click="submitProject('Approved')"
+					ng-disabled="project.status=='Approved'">Submit</button>
+			</div>
+		</form>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()">OK</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+
+</div>
+

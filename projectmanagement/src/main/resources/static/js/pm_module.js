@@ -1,2 +1,2 @@
 'use strict';
-var app = angular.module("pmApp", ['ngRoute','ui.bootstrap','ui.grid', 'ui.grid.pagination',]);
+var app = angular.module("pmApp", ['ngRoute','ngSanitize','ngAnimate','ui.bootstrap','ui.grid', 'ui.grid.pagination','ui.bootstrap.modal']);

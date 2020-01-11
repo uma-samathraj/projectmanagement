@@ -26,17 +26,38 @@
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary mb-2"
-					ng-click="submitProject()" ng-disabled="project.status=='Approved'">Submit</button>
+					ng-click="submitProject('Approved')"
+					ng-disabled="project.status=='Approved'">Submit</button>
 			</div>
 
 		</form>
 
 
 		</uib-tab> <uib-tab index="0" heading="Project Final Submission"
-			ng-click="submitFinalSubmission()">Project Final Submission</uib-tab>
+			ng-click="submitFinalSubmission()">
+
+		<div class="form-group">
+			<label for="Name">Project Name</label> <input type="text"
+				class="form-control form-wdth" id="projectname"
+				ng-model="project.name" ng-disabled="true">
+		</div>
+
+		<div class="form-group">
+			<label for="Name">Project Url</label> <input type="text"
+				class="form-control form-wdth" id="projectname"
+				ng-model="project.projectUrl"
+				ng-disabled="project.status=='Completed'">
+		</div>
 
 
-		<uib-tab index="2" heading="Project Marks"
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary mb-2"
+				ng-click="submitProject('FinalSubmission')"
+				ng-disabled="project.status=='Completed'">Submit</button>
+		</div>
+
+
+		</uib-tab> <uib-tab index="2" heading="Project Marks"
 			ng-click="viewProjectMarks()">
 
 		<div class="card bg-info">

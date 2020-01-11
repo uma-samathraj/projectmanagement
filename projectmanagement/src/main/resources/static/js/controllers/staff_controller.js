@@ -1,46 +1,61 @@
-angular.module('pmApp').controller('StaffController', function($scope) {
-	
-	
-	
-	$scope.gridOptions = {
+angular
+		.module('pmApp')
+		.controller(
+				'StaffController',
+				function($scope,$uibModal) {
 
-			paginationPageSizes: [3, 5, 10],
+					$scope.gridOptions = {
 
-			paginationPageSize: 3,
-			
-			enableSorting: true,
+						paginationPageSizes : [ 10, 20, 30 ],
 
-			columnDefs: [
+						paginationPageSize : 10,
 
-			{ field: 'Name' },
+						enableSorting : true,
 
-			{ field: 'age' },
+						columnDefs : [
 
-			{ field: 'status'}
+								{
+									field : 'StudentName'
+								},
 
-			]
+								{
+									field : 'ProjectName'
+								},
 
-	};
-	 
-	$scope.users = [
+								{
+									field : 'Status'
+								},
 
-		{ Name: "Madhav Sai", age: 10, status: 'Nagpur' },
+								{
+									name : 'Details',
+									cellTemplate : '<button class="btn primary" ng-click="grid.appScope.$parent.myFunction()">Details</button>'
+								}
 
-		{ Name: "Suresh Dasari", age: 30, status: 'Chennai' },
+						]
 
-		{ Name: "Rohini Alavala", age: 29, status: 'Chennai' },
+					};
+					
 
-		{ Name: "Praveen Kumar", age: 25, status: 'Bangalore' },
+					$scope.users = [
 
-		{ Name: "Sateesh Chandra", age: 27, status: 'Vizag' }
+					{
+						StudentName : "Madhav Sai",
+						ProjectName : "asd",
+						status : 'Nagpur'
+					},
 
-		];
+					{
+						Name : "Suresh Dasari",
+						ProjectName : "asd",
+						status : 'Chennai'
+					},
 
-		$scope.gridOptions.data = $scope.users;
+					];
+					
+					
+					
+					
+					$scope.gridOptions.data = $scope.users;
 
 
-		  this.statusChange = function (address) {
-		    var param = address.street + ",+" + address.city + ",+" + address.state;
-		  };
-	
-});
+				});
