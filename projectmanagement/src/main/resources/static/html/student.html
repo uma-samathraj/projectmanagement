@@ -8,44 +8,53 @@
 	<div class="container-fluid">
 		<uib-tabset active="activeJustified" justified="true"> <uib-tab
 			index="1" heading="Project Initial Submission"
-			ng-click="callInitialSubmission()">
-
+			>
 		<form>
 			<div class="form-group">
 				<label for="Name">Project Name</label> <input type="text"
 					class="form-control form-wdth" id="projectname"
-					ng-model="project.name" ng-disabled="project.status=='Approved'">
+					ng-model="project.projectName" ng-disabled="project.status=='Submitted'">
 			</div>
 
 			<div class="form-group">
 				<label for="projectdesc">Project Description</label>
 				<textarea class="form-control heigh-width-auto" id="projectdesc"
-					ng-disabled="project.status=='Approved'"
+					ng-disabled="project.status=='Submitted'"
 					ng-model="project.description"></textarea>
 			</div>
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary mb-2"
-					ng-click="submitProject('Approved')"
+					ng-click="submitProject('Submitted')"
 					ng-disabled="project.status=='Approved'">Submit</button>
 			</div>
 
 		</form>
 
 
-		</uib-tab> <uib-tab index="0" heading="Project Final Submission"
-			ng-click="submitFinalSubmission()">
+		</uib-tab>
+		
+		 <uib-tab index="0" heading="Project Final Submission"
+			>
 
 		<div class="form-group">
 			<label for="Name">Project Name</label> <input type="text"
 				class="form-control form-wdth" id="projectname"
-				ng-model="project.name" ng-disabled="true">
+				ng-model="project.projectName" ng-disabled="true">
 		</div>
 
 		<div class="form-group">
 			<label for="Name">Project Url</label> <input type="text"
 				class="form-control form-wdth" id="projectname"
 				ng-model="project.projectUrl"
+				ng-disabled="project.status=='Completed'">
+		</div>
+		
+		
+		<div class="form-group">
+			<label for="Name">Code Url</label> <input type="text"
+				class="form-control form-wdth" id="domain"
+				ng-model="project.domainUrl"
 				ng-disabled="project.status=='Completed'">
 		</div>
 
@@ -74,7 +83,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>{{project.name}}</td>
+							<td>{{project.projectName}}</td>
 							<td>{{project.studentName}}</td>
 							<td>{{project.studentMarks}}</td>
 							<td>{{project.result}}</td>

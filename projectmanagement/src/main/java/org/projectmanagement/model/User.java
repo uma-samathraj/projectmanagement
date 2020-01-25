@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +30,7 @@ public class User implements Serializable {
 
 	private String collegeName;
 
+	@Enumerated(EnumType.STRING)
 	private UserType userType;
 
 	public Long getId() {

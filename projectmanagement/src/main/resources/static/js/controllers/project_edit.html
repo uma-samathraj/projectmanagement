@@ -1,0 +1,41 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3>Project Info</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            
+			<form>
+			<div class="form-group">
+				<label for="Name">Project Name</label> <input type="text"
+					class="form-control" id="projectname"
+					ng-model="project.projectName" ng-disabled="project.status=='Approved'">
+			</div>
+
+			<div class="form-group">
+				<label for="projectdesc">Project Description</label>
+				<textarea class="form-control" id="projectdesc"
+					ng-disabled="project.status=='Approved'"
+					ng-model="project.description"></textarea>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary mb-2"
+					ng-click="submitProject('Approved')"
+					ng-disabled="project.status=='Approved'">Submit</button>
+			</div>
+		</form>
+			
+			
+			
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK i zatvori</button>
+            <button class="btn btn-warning" ng-click="cancel()">Odustani</button>
+        </div>
+    </div>
+</div>

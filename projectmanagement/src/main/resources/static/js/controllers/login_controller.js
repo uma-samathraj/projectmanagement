@@ -30,22 +30,11 @@ angular
 							}
 							$scope.user = {}
 							$scope.signInRequest = {};
+							$scope.signInRequest.emailId = "su@gmail.com"
+							$scope.signInRequest.password = "1234"
 							$scope.userTypes = [ 'Staff', 'Student' ];
 							$scope.user.userType = 'Student';
 							$scope.colleges = [ 'NECG', 'JNUA' ];
-
-							try {
-								if (sessionStorage.loggedIn) {
-
-									if (JSON.parse(sessionStorage.user).userType === "Staff") {
-										$location.path("/Staff");
-									} else {
-										$location.path("/student");
-									}
-								}
-							} catch (e) {
-								console.log(e);
-							}
 
 							$scope.signUp = function() {
 
@@ -55,8 +44,9 @@ angular
 										.then(
 												function successCallback(
 														response) {
-													if (response.data.responseCode===200) {
-														console.log(response.data.responseDesc);
+													if (response.data.responseCode === 200) {
+														console
+																.log(response.data.responseDesc);
 													}
 												},
 												function errorCallback(response) {
@@ -74,7 +64,7 @@ angular
 										.then(
 												function successCallback(
 														response) {
-													if (response.data.responseCode===200) {
+													if (response.data.responseCode === 200) {
 														sessionStorage.user = JSON
 																.stringify(response.data.user);
 														sessionStorage.loggedIn = true;

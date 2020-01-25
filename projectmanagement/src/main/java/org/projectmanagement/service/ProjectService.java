@@ -1,6 +1,17 @@
 package org.projectmanagement.service;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
+
 import org.projectmanagement.model.Project;
+import org.projectmanagement.model.ProjectStatus;
 import org.projectmanagement.repository.ProjectRepository;
 import org.projectmanagement.util.ApiResponse;
 import org.projectmanagement.util.ProjectRequest;
@@ -12,6 +23,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectService {
+
+	@PersistenceContext
+	EntityManager entityManager;
 
 	@Autowired
 	ProjectRepository projectRepository;
@@ -48,7 +62,6 @@ public class ProjectService {
 		return ap;
 
 	}
-
 
 	public ApiResponse deleteProject(ProjectRequest projectRequest) {
 
@@ -87,12 +100,46 @@ public class ProjectService {
 			Project p = projectRepository.findByIdstudentIdNum(id);
 			if (p == null) {
 				ap.setProject(p);
-				ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
+				ap.setResponseCode(ResponseCodes.FAILURE_CODE);
 				ap.setResponseDesc(ResponseCodes.PROJECT_NOT_EXISTS);
 			} else {
 				ap.setProject(p);
 				ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
 			}
+		} catch (Exception e) {
+			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
+			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);
+		}
+		return ap;
+	}
+
+	public ApiResponse getbyCollegeNameAndStatus(String collegeName, ProjectStatus projectStatus, int firstResult,
+			int maxResults) {
+
+		ApiResponse ap = new ApiResponse();
+
+		try {
+
+			CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+			CriteriaQuery<Project> criteria = builder.createQuery(Project.class);
+			Root<Project> root = criteria.from(Project.class);
+			Path<Long> id = root.get("id");
+			Path<String> projectName = root.get("projectName");
+			Path<String> studentName = root.get("studentName");
+			Path<ProjectStatus> status = root.get("status");
+			criteria.multiselect(id, projectName, studentName, status);
+			if (projectStatus != null) {
+				criteria.where(builder.equal(root.get("status"),  projectStatus ),builder.like(root.get("collegeName"),collegeName));
+			}
+			criteria.distinct(true);
+			TypedQuery<Project> query = entityManager.createQuery(criteria);
+			query.setFirstResult((firstResult - 1) * maxResults);
+			query.setMaxResults(maxResults);
+			List<Project> allProjects = query.getResultList();
+			int lastPageNumber = (int) (Math.ceil(allProjects.size() / maxResults));
+			ap.setAllProjects(allProjects);
+			ap.setLastPageNumber(lastPageNumber);
+			ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
 		} catch (Exception e) {
 			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
 			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);

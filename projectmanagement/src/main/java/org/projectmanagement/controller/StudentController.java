@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/pm/project")
-public class ProjectController {
+@RequestMapping(path = "/pm/student/project")
+public class StudentController {
 
 	@Autowired
 	ProjectService projectService;
@@ -25,14 +25,10 @@ public class ProjectController {
 		return projectService.createProject(project);
 	}
 
-	@GetMapping(path = "/getAllProjects")
-	public ApiResponse getAllProject() {
-		return projectService.getAllProjectInfo();
-	}
 
 	@GetMapping(path = "/getproject")
 	public ApiResponse getProject(@RequestParam String id) {
-		return projectService.getProjectByStudentId(id);
+	return projectService.getProjectByStudentId(id);
 	}
 
 	@PutMapping(path = "/update")

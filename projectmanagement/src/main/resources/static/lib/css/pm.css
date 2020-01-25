@@ -110,5 +110,22 @@
 
 .grid {
 	width: 100%;
-	height: 250px;
+	height: auto;
+}
+
+
+.modal.fade.in {
+  opacity: 1;
+}
+.modal.in .modal-dialog {
+  transform: translate(0, 0);
+}
+.modal-backdrop.in {
+  opacity: 0.5;
+  /* opacity: $modal-backdrop-opacity; (SCSS) */
+}
+
+.modal-body{
+	width: 80%;
+	height: auto;
 }

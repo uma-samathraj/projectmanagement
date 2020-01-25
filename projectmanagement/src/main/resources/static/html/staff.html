@@ -6,10 +6,26 @@
 </head>
 <body>
 	<div class="container">
-		<uib-tabset active="activeJustified" justified="true"> <uib-tab
-			index="1" heading="Waiting For Project Review">
-			<div ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+		
+		
+		<uib-tabset active="activeJustified" justified="true"> 
+		
+		<uib-tab
+			index="1" heading="Waiting For Project Review" ng-click="getProjectByStatus('Submitted')">
+			<div id="a" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
 		</uib-tab> 
+		
+		<uib-tab
+			index="2" heading="Waiting For Project Approver" ng-click="getProjectByStatus('FinalSubmission')">
+			<div id="b" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+		</uib-tab> 
+		
+		<uib-tab
+			index="3" heading="Waiting For Project Completed" ng-click="getProjectByStatus('Completed')">
+			<div id="c" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+		</uib-tab> 
+		
+		
 	 </uib-tabset>
 	</div>
 </body>

@@ -2,7 +2,7 @@ angular.module('pmApp').controller(
 		'StudentController',
 		function($scope, $http) {
 
-			var REST_SERVICE_URI = 'http://localhost:8080/pm/project';
+			var REST_SERVICE_URI = 'http://localhost:8080/pm/student/project';
 			$scope.project = {};
 			$scope.user = JSON.parse(sessionStorage.user);
 
@@ -19,25 +19,7 @@ angular.module('pmApp').controller(
 					}
 				};
 
-				$http.get(REST_SERVICE_URI + "/getproject", config).then(
-						function(response) {
-
-							if (response.data.responseCode === 200) {
-								var project = response.data.project;
-								if (project != null) {
-									$scope.project = project;
-									console.log("success");
-								}
-							}
-						}, function(response) {
-
-							console.log("failure");
-						});
-
-			}
-
-			$scope.callInitialSubmission = function() {
-				console.log("called callInitialSubmission");
+				$scope.getProjectInfo(config);
 			}
 
 			$scope.submitProject = function(status) {
@@ -57,4 +39,42 @@ angular.module('pmApp').controller(
 
 			$scope.init();
 
+			$scope.getProjectInfo=function(config){
+				
+				$http.get(REST_SERVICE_URI + "/getproject", config).then(
+						function(response) {
+
+							if (response.data.responseCode === 200) {
+								var project = response.data.project;
+								if (project != null) {
+									$scope.project = project;
+									console.log("success");
+								}
+							}
+						}, function(response) {
+
+							console.log("failure");
+						});
+
+			}
+			
+			
+			$scope.viewProjectMarks=function(){
+				
+				var data = {
+						id : $scope.user.idNum
+					};
+
+					var config = {
+						params : data,
+						headers : {
+							'Accept' : 'application/json'
+						}
+					};
+				
+				$scope.getProjectInfo();
+				
+			}
+			
+			
 		});

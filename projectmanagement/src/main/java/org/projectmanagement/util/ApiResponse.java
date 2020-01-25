@@ -16,6 +16,28 @@ public class ApiResponse implements Serializable {
 	private int responseCode;
 	
 	private String responseDesc;
+	
+	private int lastPageNumber;
+	
+	public int getLastPageNumber() {
+		return lastPageNumber;
+	}
+
+	public void setLastPageNumber(int lastPageNumber) {
+		this.lastPageNumber = lastPageNumber;
+	}
+
+
+	private List<Project> projects;
+	
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
 
 	public String getResponseDesc() {
 		return responseDesc;

@@ -4,10 +4,6 @@
 <meta charset="ISO-8859-1">
 <title>ProjectManagement</title>
 <base href="/">
-</head>
-<body ng-app="pmApp">
-<ng-view autoscroll="true"></ng-view>
-</body>
 <script src="lib/popper.min.js"></script>
 <script src="lib/jquery.js"></script>
 <script src="lib/js/bootstrap.min.js"></script>
@@ -33,7 +29,12 @@
 <script src="./js/controllers/login_controller.js"></script>
 <script src="./js/controllers/staff_controller.js"></script>
 <script src="./js/controllers/student_controller.js"></script>
+<script src="./js/controllers/my_modal.js"></script>
 <script src="./js/controllers/user_controller.js"></script>
 <script src="./js/services/pm_services.js"></script>
 <script src="./js/services/user_service.js"></script>
+</head>
+<body ng-app="pmApp">
+<div ng-view></div>
+</body>
 </html>

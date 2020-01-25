@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,9 +20,75 @@ public class Project implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 
-	private String name;
+	private String projectName;
+
+	public Project(Long id, String projectName, String studentName,ProjectStatus status) {
+		super();
+		this.id = id;
+		this.projectName = projectName;
+		this.studentName = studentName;
+		this.status = status;
+	}
 
 	private String description;
+
+	@Enumerated(EnumType.STRING)
+	private ProjectStatus status;
+
+	@Enumerated(EnumType.STRING)
+	private Result result;
+
+	private String projectUrl;
+
+	private String domainUrl;
+
+	private String studentName;
+
+	private Long studentMarks;
+
+	private String collegeName;
+
+	public Project() {
+		
+		
+	}
+	
+	public Project(ProjectStatus status, String collegeName) {
+		super();
+		this.status = status;
+		this.collegeName = collegeName;
+	}
+
+	public Project(Long id, String projectName, String description, ProjectStatus status, Result result, String projectUrl,
+			String domainUrl, String studentName, Long studentMarks, String collegeName, String staffIdNum,
+			String staffComments, String studentIdNum) {
+		super();
+		this.id = id;
+		this.projectName = projectName;
+		this.description = description;
+		this.status = status;
+		this.result = result;
+		this.projectUrl = projectUrl;
+		this.domainUrl = domainUrl;
+		this.studentName = studentName;
+		this.studentMarks = studentMarks;
+		this.collegeName = collegeName;
+		this.staffIdNum = staffIdNum;
+		this.staffComments = staffComments;
+		this.studentIdNum = studentIdNum;
+	}
+
+	private String staffIdNum;
+
+	private String staffComments;
+	
+	public String getDomainUrl() {
+		return domainUrl;
+	}
+
+	public void setDomainUrl(String domainUrl) {
+		this.domainUrl = domainUrl;
+	}
 
 	public Result getResult() {
 		return result;
@@ -29,12 +97,6 @@ public class Project implements Serializable {
 	public void setResult(Result result) {
 		this.result = result;
 	}
-
-	private ProjectStatus status;
-	
-	private Result result;
-	
-	private String projectUrl;
 
 	public String getProjectUrl() {
 		return projectUrl;
@@ -54,11 +116,11 @@ public class Project implements Serializable {
 		this.studentIdNum = studentIdNum;
 	}
 
-	public String getStudentName() {
+	public String getstudentName() {
 		return studentName;
 	}
 
-	public void setStudentName(String studentName) {
+	public void setstudentName(String studentName) {
 		this.studentName = studentName;
 	}
 
@@ -70,11 +132,11 @@ public class Project implements Serializable {
 		this.studentMarks = studentMarks;
 	}
 
-	public String getCollegeName() {
+	public String getcollegeName() {
 		return collegeName;
 	}
 
-	public void setCollegeName(String collegeName) {
+	public void setcollegeName(String collegeName) {
 		this.collegeName = collegeName;
 	}
 
@@ -86,14 +148,6 @@ public class Project implements Serializable {
 		this.staffIdNum = staffIdNum;
 	}
 
-	private String studentName;
-
-	private Long studentMarks;
-
-	private String collegeName;
-
-	private String staffIdNum;
-
 	public Long getId() {
 		return id;
 	}
@@ -102,12 +156,12 @@ public class Project implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getprojectName() {
+		return projectName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setprojectName(String projectName) {
+		this.projectName = projectName;
 	}
 
 	public String getDescription() {
@@ -124,6 +178,14 @@ public class Project implements Serializable {
 
 	public void setStatus(ProjectStatus status) {
 		this.status = status;
+	}
+
+	public String getStaffComments() {
+		return staffComments;
+	}
+
+	public void setStaffComments(String staffComments) {
+		this.staffComments = staffComments;
 	}
 
 }
