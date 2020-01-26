@@ -2,21 +2,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Staff</title>
 </head>
 <body>
 	<div class="container">
 		
-		
 		<uib-tabset active="activeJustified" justified="true"> 
 		
 		<uib-tab
-			index="1" heading="Waiting For Project Review" ng-click="getProjectByStatus('Submitted')">
+			index="1" heading="Waiting For Project Approver" ng-click="getProjectByStatus('Submitted')">
 			<div id="a" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
 		</uib-tab> 
 		
 		<uib-tab
-			index="2" heading="Waiting For Project Approver" ng-click="getProjectByStatus('FinalSubmission')">
+			index="2" heading="Waiting For Project Review" ng-click="getProjectByStatus('FinalSubmission')">
 			<div id="b" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
 		</uib-tab> 
 		

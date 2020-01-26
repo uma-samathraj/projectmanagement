@@ -37,8 +37,6 @@ angular.module('pmApp').controller(
 						});
 			}
 
-			$scope.init();
-
 			$scope.getProjectInfo=function(config){
 				
 				$http.get(REST_SERVICE_URI + "/getproject", config).then(
@@ -72,9 +70,10 @@ angular.module('pmApp').controller(
 						}
 					};
 				
-				$scope.getProjectInfo();
+				$scope.getProjectInfo(config);
 				
 			}
-			
+
+			$scope.init();
 			
 		});

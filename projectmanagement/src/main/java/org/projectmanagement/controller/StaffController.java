@@ -23,9 +23,10 @@ public class StaffController {
 	}
 	
 	@GetMapping(path = "/getproject")
-	public ApiResponse getProject(@RequestParam String id) {
-		return projectService.getProjectByStudentId(id);
+	public ApiResponse getProject(@RequestParam Long id) {
+		return projectService.getProjectById(id);
 	}
+	
 	
 	@GetMapping(path = "/update")
 	public ApiResponse updateProject(@RequestParam Project project ) {

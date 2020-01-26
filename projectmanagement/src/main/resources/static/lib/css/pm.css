@@ -65,11 +65,11 @@
 
 .heigh-width-auto {
 	height: 350px;
-	width : 1000px;
-} 
+	width: 1000px;
+}
 
-.form-wdth{
-	width : 700px;
+.form-wdth {
+	width: 700px;
 }
 
 #logreg-forms button[type="submit"] {
@@ -113,19 +113,33 @@
 	height: auto;
 }
 
-
 .modal.fade.in {
-  opacity: 1;
-}
-.modal.in .modal-dialog {
-  transform: translate(0, 0);
-}
-.modal-backdrop.in {
-  opacity: 0.5;
-  /* opacity: $modal-backdrop-opacity; (SCSS) */
+	opacity: 1;
 }
 
-.modal-body{
-	width: 80%;
-	height: auto;
+.modal.in .modal-dialog {
+	transform: translate(0, 0);
+}
+
+.modal-backdrop.in {
+	opacity: 0.5;
+	/* opacity: $modal-backdrop-opacity; (SCSS) */
+}
+
+.btn-align {
+	margin-left: 20px;
+}
+
+.desc-overlow {
+	height: 150px;
+	width: 450px;
+}
+
+.pos-fixed {
+	position: fixed;
+}
+
+
+.modal-content{
+	width: 1000px;
 }

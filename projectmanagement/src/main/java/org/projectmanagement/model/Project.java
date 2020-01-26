@@ -59,9 +59,13 @@ public class Project implements Serializable {
 		this.collegeName = collegeName;
 	}
 
-	public Project(Long id, String projectName, String description, ProjectStatus status, Result result, String projectUrl,
-			String domainUrl, String studentName, Long studentMarks, String collegeName, String staffIdNum,
-			String staffComments, String studentIdNum) {
+	private String staffIdNum;
+
+	private String staffComments1;
+	
+	public Project(Long id, String projectName, String description, ProjectStatus status, Result result,
+			String projectUrl, String domainUrl, String studentName, Long studentMarks, String collegeName,
+			String staffIdNum, String staffComments1, String staffComments2, String studentIdNum) {
 		super();
 		this.id = id;
 		this.projectName = projectName;
@@ -74,13 +78,53 @@ public class Project implements Serializable {
 		this.studentMarks = studentMarks;
 		this.collegeName = collegeName;
 		this.staffIdNum = staffIdNum;
-		this.staffComments = staffComments;
+		this.staffComments1 = staffComments1;
+		this.staffComments2 = staffComments2;
 		this.studentIdNum = studentIdNum;
 	}
 
-	private String staffIdNum;
+	public String getProjectName() {
+		return projectName;
+	}
 
-	private String staffComments;
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	public String getStudentName() {
+		return studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public String getCollegeName() {
+		return collegeName;
+	}
+
+	public void setCollegeName(String collegeName) {
+		this.collegeName = collegeName;
+	}
+
+	public String getStaffComments1() {
+		return staffComments1;
+	}
+
+	public void setStaffComments1(String staffComments1) {
+		this.staffComments1 = staffComments1;
+	}
+
+	public String getStaffComments2() {
+		return staffComments2;
+	}
+
+	public void setStaffComments2(String staffComments2) {
+		this.staffComments2 = staffComments2;
+	}
+
+	private String staffComments2;
+	
 	
 	public String getDomainUrl() {
 		return domainUrl;
@@ -116,13 +160,6 @@ public class Project implements Serializable {
 		this.studentIdNum = studentIdNum;
 	}
 
-	public String getstudentName() {
-		return studentName;
-	}
-
-	public void setstudentName(String studentName) {
-		this.studentName = studentName;
-	}
 
 	public Long getStudentMarks() {
 		return studentMarks;
@@ -132,13 +169,6 @@ public class Project implements Serializable {
 		this.studentMarks = studentMarks;
 	}
 
-	public String getcollegeName() {
-		return collegeName;
-	}
-
-	public void setcollegeName(String collegeName) {
-		this.collegeName = collegeName;
-	}
 
 	public String getStaffIdNum() {
 		return staffIdNum;
@@ -156,13 +186,6 @@ public class Project implements Serializable {
 		this.id = id;
 	}
 
-	public String getprojectName() {
-		return projectName;
-	}
-
-	public void setprojectName(String projectName) {
-		this.projectName = projectName;
-	}
 
 	public String getDescription() {
 		return description;
@@ -178,14 +201,6 @@ public class Project implements Serializable {
 
 	public void setStatus(ProjectStatus status) {
 		this.status = status;
-	}
-
-	public String getStaffComments() {
-		return staffComments;
-	}
-
-	public void setStaffComments(String staffComments) {
-		this.staffComments = staffComments;
 	}
 
 }

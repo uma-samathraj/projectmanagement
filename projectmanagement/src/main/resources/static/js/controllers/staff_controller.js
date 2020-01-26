@@ -22,7 +22,7 @@ angular
 						useExternalPagination : true,
 						enableSorting : false,
 						enableFiltering : false,
-						enableHiding: true,
+						enableHiding : true,
 
 						columnDefs : [
 
@@ -53,40 +53,70 @@ angular
 											function(pageNumber, pageSize) {
 												paginationOptions.pageNumber = pageNumber;
 												paginationOptions.pageSize = pageSize;
-												$scope
-														.getProjectByStatus($scope.currentStatus);
+												$scope.getProjectByStatus($scope.currentStatus);
 											});
 						}
 
 					};
 
-					$scope.openModal = function (e, row) {
-					    //in here, you can access the event object and row object
-					    var myEvent = e;
-					    var myRow = row;
+					$scope.openModal = function(e, row) {
+						// in here, you can access the event object and row
+						// object
+						var myEvent = e;
+						var myRow = row;
+						
+						var data = {
+								id:row.id,
+							};
 
-					    //this is how you open a modal
-					    var modalInstance = $uibModal.open({
-					        templateUrl: '/js/controllers/project_edit.html',
-					        controller: 'MyModalCtrl',
-					        backdrop: 'static',
-					        scope: $scope,
-					        //disable the keyboard
-					        //keyboard: false,
-					        resolve :{
-					            //pass variables to the MyModalCtrl here
-					            event: function() { return myEvent; },
-					            row: function() { return myRow; }
-					        }
-					    });
+							var config = {
+								params : data,
+								headers : {
+									'Accept' : 'application/json'
+								}
+							};
+						
+						$http.get(REST_SERVICE_URI + "/getproject", config).then(
+								function(response) {
 
-					    //call the modal to open, then decide what to do with the promise
-					    modalInstance.result.then(function(data) {
-					    	console.log("ok data is"+data);
-					    console.log("ok"+$scope.project.result);	
-					    },function(){
-					    	 console.log("cancel");
-					    })
+									if (response.data.responseCode === 200) {
+										var project = response.data.project;
+										if (project != null) {
+											$scope.project = project;
+											
+											// this is how you open a modal
+											var modalInstance = $uibModal.open({
+												templateUrl : '../../html/project_review.html',
+												controller : 'MyModalCtrl',
+												size: 'lg',
+												backdrop : 'static',
+												scope : $scope,
+												windowClass: 'my-modal-popup',
+												// disable the keyboard
+												// keyboard: false,
+												resolve : {
+													// pass variables to the MyModalCtrl here
+													event : function() {
+														return myEvent;
+													},
+													row : function() {
+														return $scope.project;
+													}
+												}
+											});
+											// call the modal to open, then decide what to do with
+											// the promise
+											modalInstance.result.then(function(data) {
+												console.log("ok" + $scope.project.result);
+											}, function() {
+												console.log("cancel");
+											});
+										}
+									}
+								}, function(response) {
+									console.log("failure");
+								});
+
 					}
 
 					$scope.getProjectByStatus = function(status) {

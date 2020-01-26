@@ -1,6 +1,7 @@
 package org.projectmanagement.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -112,6 +113,29 @@ public class ProjectService {
 		}
 		return ap;
 	}
+
+	
+	public ApiResponse getProjectById(Long id) {
+		ApiResponse ap = new ApiResponse();
+		try {
+
+			Optional<Project> p = projectRepository.findById(id);
+			if (!p.isPresent()) {
+				ap.setProject(null);
+				ap.setResponseCode(ResponseCodes.FAILURE_CODE);
+				ap.setResponseDesc(ResponseCodes.PROJECT_NOT_EXISTS);
+			} else {
+				ap.setProject(p.get());
+				ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
+			}
+		} catch (Exception e) {
+			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
+			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);
+		}
+		return ap;
+	}
+	
+	
 
 	public ApiResponse getbyCollegeNameAndStatus(String collegeName, ProjectStatus projectStatus, int firstResult,
 			int maxResults) {
