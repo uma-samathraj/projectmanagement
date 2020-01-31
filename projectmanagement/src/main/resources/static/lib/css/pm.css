@@ -139,7 +139,22 @@
 	position: fixed;
 }
 
+.modal-content {
+	width: 800px;
+}
 
-.modal-content{
-	width: 1000px;
+.modal-body {
+	margin-left: 150px;
+	position: relative;
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	padding: 1rem;
+}
+
+.modal-header {
+	
+	justify-content: center;
+	font-size: large;
+	font-family: -webkit-body;
 }

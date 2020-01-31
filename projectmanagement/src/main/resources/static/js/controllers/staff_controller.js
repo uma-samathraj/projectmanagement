@@ -83,7 +83,7 @@ angular
 										var project = response.data.project;
 										if (project != null) {
 											$scope.project = project;
-											
+											$scope.project.currentStatus = $scope.currentStatus;
 											// this is how you open a modal
 											var modalInstance = $uibModal.open({
 												templateUrl : '../../html/project_review.html',

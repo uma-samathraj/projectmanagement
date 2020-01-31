@@ -129,6 +129,16 @@ grant all privileges on database miniproject to uma;
 ALTER ROLE uma SUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
 
 
+use projectmanagement;
+
+insert into college values(1,'Thoothukudi','St Theresa engineering college');
+insert into college values(2,'Thiruchendhur','Dr. Sivanthi Aditanar College of Engineering');
+insert into college values(3,'Thoothukudi','University V.O.C. College Of Engineering');
+insert into college values(4,'Thoothukudi','Chandy College of Engineering');
+insert into college values(5,'Thoothukudi','V.O. Chidambaram College');
+insert into college values(6,'Thoothukudi','Holycross Engineering College');
+
+
 Reference Links
 ...............
 

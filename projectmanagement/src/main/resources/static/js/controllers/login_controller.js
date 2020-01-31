@@ -9,6 +9,10 @@ angular
 						function($scope, $http, $location) {
 
 							var REST_SERVICE_URI = 'http://localhost:8080/pm/user';
+							
+							var COLLEGE_REST_URI = 'http://localhost:8080/pm/college';
+							
+							
 
 							$scope.toggleResetPswd = function() {
 								$('#logreg-forms .form-signin').toggle() // display:block
@@ -34,9 +38,34 @@ angular
 							$scope.signInRequest.password = "1234"
 							$scope.userTypes = [ 'Staff', 'Student' ];
 							$scope.user.userType = 'Student';
-							$scope.colleges = [ 'NECG', 'JNUA' ];
+							$scope.colleges = [];
+							
+							$scope.init=function(){
+								
+								var config = {
+										headers : {
+											'Accept' : 'application/json'
+										}
+									};
+								
+								//load colleges
+								$http.get(COLLEGE_REST_URI + "/getall", config).then(
+										function(response) {
+											if (response.data.responseCode === 200) {
+												var colleges = response.data.allColleges;
+												if (colleges != null) {
+													$scope.colleges = colleges;
+													console.log("success");
+												}
+											}
+										}, function(response) {
+											console.log("failure");
+										});
+							}
 
 							$scope.signUp = function() {
+								
+								
 
 								$http
 										.post(REST_SERVICE_URI + "/signup",
@@ -89,4 +118,7 @@ angular
 
 							}
 
+							
+							$scope.init();
+							
 						} ]);
