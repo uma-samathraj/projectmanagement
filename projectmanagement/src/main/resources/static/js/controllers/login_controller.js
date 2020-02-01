@@ -47,8 +47,6 @@ angular
 							}
 							$scope.user = {}
 							$scope.signInRequest = {};
-							$scope.signInRequest.emailId = "mano@gmail.com"
-							$scope.signInRequest.password = "mano123"
 							$scope.userTypes = [ 'Staff', 'Student' ];
 							$scope.user.userType = 'Student';
 							$scope.colleges = [];
