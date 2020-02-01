@@ -3,29 +3,45 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Staff</title>
+<div>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top justify-content-end">
+		<ul class="navbar-nav">
+			<div class="float-left">
+				<ul class="nav float-left">
+					<li class="dropdown">
+								<a href="javascript:void(0)"
+						class="dropdown-toggle" data-toggle="dropdown"> <img
+									src="../lib/images/user.png" width="15" height="25"
+									height="30" class="d-inline-block align-top" alt="Welcome">
+									<h12  style="color:white">Welcome, {{user.name}}</h12>
+								</a>
+								<b 
+							class="caret"></b>
+					</a>
+						<ul class="dropdown-menu">
+							<li class="menu-align">
+							<a href="javascript:void(0)" ng-click="logout()"><i
+									class="icon-off"></i> <h12  style="color:black">Logout</h12></a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</ul>
+	</nav>
+</div>
 </head>
 <body>
-	<div class="container">
-		
-		<uib-tabset active="activeJustified" justified="true"> 
-		
-		<uib-tab
-			index="1" heading="Waiting For Project Approver" ng-click="getProjectByStatus('Submitted')">
-			<div id="a" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
-		</uib-tab> 
-		
-		<uib-tab
-			index="2" heading="Waiting For Project Review" ng-click="getProjectByStatus('FinalSubmission')">
-			<div id="b" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
-		</uib-tab> 
-		
-		<uib-tab
-			index="3" heading="Waiting For Project Completed" ng-click="getProjectByStatus('Completed')">
-			<div id="c" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
-		</uib-tab> 
-		
-		
-	 </uib-tabset>
+	<div class="container-fluid staff-align">
+		<uib-tabset active="activeJustified" justified="true"> <uib-tab
+			index="1" heading="Waiting For Project Approver" class="tab-style"
+			ng-click="getProjectByStatus('Submitted')">
+		<div id="a" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+		</uib-tab> <uib-tab index="2" heading="Waiting For Project Review"
+			ng-click="getProjectByStatus('FinalSubmission')">
+		<div id="b" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+		</uib-tab> <uib-tab index="3" heading="Waiting For Project Completed"
+			ng-click="getProjectByStatus('Completed')">
+		<div id="c" ui-grid="gridOptions" ui-grid-pagination class="myGrid"></div>
+		</uib-tab> </uib-tabset>
 	</div>
 </body>
 </html>

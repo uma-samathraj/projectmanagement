@@ -11,12 +11,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
+import org.projectmanagement.model.PMConstants;
 import org.projectmanagement.model.Project;
 import org.projectmanagement.model.ProjectStatus;
 import org.projectmanagement.repository.ProjectRepository;
 import org.projectmanagement.util.ApiResponse;
 import org.projectmanagement.util.ProjectRequest;
-import org.projectmanagement.util.ResponseCodes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +39,12 @@ public class ProjectService {
 
 		try {
 			projectRepository.save(project);
-			ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
-			ap.setResponseDesc(ResponseCodes.PROJECT_SAVED_SUCCESSFULLY);
+			ap.setResponseCode(PMConstants.SUCCESS_CODE);
+			ap.setResponseDesc(PMConstants.PROJECT_SAVED_SUCCESSFULLY);
 			log.info("Suucessfully saved at ProjectService-->create Method");
 		} catch (Exception e) {
-			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
-			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);
+			ap.setResponseCode(PMConstants.FAILURE_CODE);
+			ap.setResponseDesc(PMConstants.CONTACT_ADMIN);
 		}
 		return ap;
 	}
@@ -55,10 +55,10 @@ public class ProjectService {
 
 		try {
 			ap.setAllProjects(projectRepository.findAll());
-			ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
+			ap.setResponseCode(PMConstants.SUCCESS_CODE);
 		} catch (Exception e) {
-			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
-			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);
+			ap.setResponseCode(PMConstants.FAILURE_CODE);
+			ap.setResponseDesc(PMConstants.CONTACT_ADMIN);
 		}
 		return ap;
 
@@ -70,26 +70,26 @@ public class ProjectService {
 
 		try {
 			projectRepository.deleteById(projectRequest.getId());
-			ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
+			ap.setResponseCode(PMConstants.SUCCESS_CODE);
 		} catch (Exception e) {
-			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
-			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);
+			ap.setResponseCode(PMConstants.FAILURE_CODE);
+			ap.setResponseDesc(PMConstants.CONTACT_ADMIN);
 		}
 		return ap;
 
 	}
 
-	public ApiResponse updateProject(Project project) {
+	public ApiResponse saveProject(Project project) {
 
 		ApiResponse ap = new ApiResponse();
 
 		try {
 			projectRepository.save(project);
-			ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
-			ap.setResponseDesc(ResponseCodes.PROJECT_SAVED_SUCCESSFULLY);
+			ap.setResponseCode(PMConstants.SUCCESS_CODE);
+			ap.setResponseDesc(PMConstants.PROJECT_SAVED_SUCCESSFULLY);
 		} catch (Exception e) {
-			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
-			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);
+			ap.setResponseCode(PMConstants.FAILURE_CODE);
+			ap.setResponseDesc(PMConstants.CONTACT_ADMIN);
 		}
 		return ap;
 	}
@@ -101,15 +101,15 @@ public class ProjectService {
 			Project p = projectRepository.findByIdstudentIdNum(id);
 			if (p == null) {
 				ap.setProject(p);
-				ap.setResponseCode(ResponseCodes.FAILURE_CODE);
-				ap.setResponseDesc(ResponseCodes.PROJECT_NOT_EXISTS);
+				ap.setResponseCode(PMConstants.FAILURE_CODE);
+				ap.setResponseDesc(PMConstants.PROJECT_NOT_EXISTS);
 			} else {
 				ap.setProject(p);
-				ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
+				ap.setResponseCode(PMConstants.SUCCESS_CODE);
 			}
 		} catch (Exception e) {
-			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
-			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);
+			ap.setResponseCode(PMConstants.FAILURE_CODE);
+			ap.setResponseDesc(PMConstants.CONTACT_ADMIN);
 		}
 		return ap;
 	}
@@ -122,15 +122,15 @@ public class ProjectService {
 			Optional<Project> p = projectRepository.findById(id);
 			if (!p.isPresent()) {
 				ap.setProject(null);
-				ap.setResponseCode(ResponseCodes.FAILURE_CODE);
-				ap.setResponseDesc(ResponseCodes.PROJECT_NOT_EXISTS);
+				ap.setResponseCode(PMConstants.FAILURE_CODE);
+				ap.setResponseDesc(PMConstants.PROJECT_NOT_EXISTS);
 			} else {
 				ap.setProject(p.get());
-				ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
+				ap.setResponseCode(PMConstants.SUCCESS_CODE);
 			}
 		} catch (Exception e) {
-			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
-			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);
+			ap.setResponseCode(PMConstants.FAILURE_CODE);
+			ap.setResponseDesc(PMConstants.CONTACT_ADMIN);
 		}
 		return ap;
 	}
@@ -163,10 +163,10 @@ public class ProjectService {
 			int lastPageNumber = (int) (Math.ceil(allProjects.size() / maxResults));
 			ap.setAllProjects(allProjects);
 			ap.setLastPageNumber(lastPageNumber);
-			ap.setResponseCode(ResponseCodes.SUCCESS_CODE);
+			ap.setResponseCode(PMConstants.SUCCESS_CODE);
 		} catch (Exception e) {
-			ap.setResponseCode(ResponseCodes.FAILURE_CODE);
-			ap.setResponseDesc(ResponseCodes.CONTACT_ADMIN);
+			ap.setResponseCode(PMConstants.FAILURE_CODE);
+			ap.setResponseDesc(PMConstants.CONTACT_ADMIN);
 		}
 		return ap;
 	}

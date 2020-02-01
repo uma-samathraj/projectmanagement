@@ -1,4 +1,3 @@
-
 <div class="modal-header">
 	<div>
 		<label for="projectName">Project:-</label> {{project.projectName}}
@@ -11,10 +10,10 @@
 	<div>
 		<label for="Name">StudentId:-</label> {{project.studentIdNum}}
 	</div>
-	<div ng-if="project.currentStatus =='Completed' ">
-		<label for="Name">Marks:-</label> {{project.result}}
+	<div ng-if="project.currentStatus === 'Completed' ">
+		<label for="Name">Marks:-</label> {{project.studentMarks}}
 	</div>
-	<div ng-if="project.currentStatus !=='Completed' ">
+	<div ng-if="project.currentStatus === 'Completed'">
 		<label for="Name">Result:-</label> {{project.result}}
 	</div>
 	<form>
@@ -25,14 +24,16 @@
 				tooltip-placement="right" tooltip-append-to-body="false"
 				ng-disabled="true" ng-model="project.description"></textarea>
 		</div>
-		<div class="form-group " ng-if="project.currentStatus !=='Completed' ">
-			<label for="projectdesc">ReviewComments</label>
-			<textarea class="form-control desc-overlow" id="reviewcomments"
+		<div class="form-group " ng-if="project.currentStatus =='Submitted' || project.currentStatus =='Rejected' ">
+			<label for="projectdesc">Review-1</label>
+			<textarea class="form-control desc-overlow" id="reviewcomments1"
+			   ng-disabled="project.currentStatus !='Submitted' && project.currentStatus !='Rejected'"
 				ng-model="project.staffComments1"></textarea>
 		</div>
-		<div class="form-group " ng-if="project.currentStatus !=='Completed' ">
-			<label for="projectdesc">ReviewComments</label>
+		<div class="form-group " ng-if="project.currentStatus =='FinalSubmission' ">
+			<label for="projectdesc">Review-2</label>
 			<textarea class="form-control desc-overlow" id="reviewcomments2"
+			ng-disabled="project.currentStatus =='Completed'"
 				ng-model="project.staffComments2"></textarea>
 		</div>
 		<div class="form-group"
@@ -48,12 +49,21 @@
 				ng-disabled="true">
 		</div>
 
-		<div class="form-group" ng-if="project.currentStatus != 'Completed' ">
+		<div class="form-group" ng-if="project.currentStatus == 'Submitted' ">
 			<div class="btn-group">
 				<label class="btn btn-success" uib-btn-radio="'Approved'"
-					ng-model="project.projectStatus">Approved</label> <label
+					ng-model="project.status">Approved</label> <label
 					class="btn btn-success" uib-btn-radio="'Rejected'"
-					ng-model="project.projectStatus">Rejected</label>
+					ng-model="project.status">Rejected</label>
+			</div>
+		</div>
+		
+		<div class="form-group" ng-if="project.currentStatus == 'FinalSubmission' ">
+			<div class="btn-group">
+				<label class="btn btn-success" uib-btn-radio="'Completed'"
+					ng-model="project.status">Completed</label> <label
+					class="btn btn-success" uib-btn-radio="'Rejected'"
+					ng-model="project.status">Rejected</label>
 			</div>
 		</div>
 
@@ -75,10 +85,12 @@
 
 		<div class="form-group">
 			<button class="btn btn-primary btn-align"
+			ng-if="project.currentStatus != 'Completed'"
 				ng-click="updateToStudent()">Save</button>
-			<button class="btn btn-warning " ng-click="cancel()">Cancel</button>
+			<button class="btn btn-warning " ng-click="cancel()">Close</button>
 		</div>
-
+		
+		
 	</form>
 
 </div>

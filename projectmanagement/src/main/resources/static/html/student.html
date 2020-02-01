@@ -3,68 +3,91 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<div>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top justify-content-end">
+		<ul class="navbar-nav">
+			<div class="float-left">
+				<ul class="nav float-left">
+					<li class="dropdown">
+								<a href="javascript:void(0)"
+						class="dropdown-toggle" data-toggle="dropdown"> <img
+									src="../lib/images/user.png" width="15" height="25"
+									height="30" class="d-inline-block align-top" alt="Welcome">
+									<h12  style="color:white">Welcome, {{user.name}}</h12>
+								</a>
+								<b 
+							class="caret"></b>
+					</a>
+						<ul class="dropdown-menu">
+							<li class="menu-align">
+							<a href="javascript:void(0)" ng-click="logout()"><i
+									class="icon-off"></i> <h12  style="color:black">Logout</h12></a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</ul>
+	</nav>
+</div>
 </head>
 <body>
-	<div class="container-fluid">
-		<uib-tabset active="activeJustified" justified="true"> <uib-tab
-			index="1" heading="Project Initial Submission"
-			>
-		<form>
+	<div class="container-fluid student-align">
+		<uib-tabset active="activeJustified" justified="true"
+			ng-click="getProject()" class="tab-style"> <uib-tab
+			index="1" heading="Project Initial Submission">
+		<form name="prosubmit" ng-submit="submitProject('Submitted')" validate
+			class="form-adjust">
 			<div class="form-group">
 				<label for="Name">Project Name</label> <input type="text"
-					class="form-control form-wdth" id="projectname"
-					ng-model="project.projectName" ng-disabled="project.status=='Submitted'">
+					class="form-control form-wdth" id="projectname" required
+					ng-model="project.projectName">
 			</div>
 
 			<div class="form-group">
 				<label for="projectdesc">Project Description</label>
-				<textarea class="form-control heigh-width-auto" id="projectdesc"
-					ng-disabled="project.status=='Submitted'"
-					ng-model="project.description"></textarea>
+				<textarea class="form-control heigh-width-auto" required
+					id="projectdesc" ng-model="project.description"></textarea>
 			</div>
 
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary mb-2"
-					ng-click="submitProject('Submitted')"
-					ng-disabled="project.status=='Approved'">Submit</button>
+				<button type="submit" class="btn btn-primary mb-2">Submit</button>
 			</div>
 
 		</form>
 
 
-		</uib-tab>
-		
-		 <uib-tab index="0" heading="Project Final Submission"
-			>
+		</uib-tab> <uib-tab index="0" heading="Project Final Submission"
+			ng-click="getProject()">
 
-		<div class="form-group">
-			<label for="Name">Project Name</label> <input type="text"
-				class="form-control form-wdth" id="projectname"
-				ng-model="project.projectName" ng-disabled="true">
-		</div>
+		<form name="prosubmit" ng-submit="submitProject('FinalSubmission')"
+			validate>
 
-		<div class="form-group">
-			<label for="Name">Project Url</label> <input type="text"
-				class="form-control form-wdth" id="projectname"
-				ng-model="project.projectUrl"
-				ng-disabled="project.status=='Completed'">
-		</div>
-		
-		
-		<div class="form-group">
-			<label for="Name">Code Url</label> <input type="text"
-				class="form-control form-wdth" id="domain"
-				ng-model="project.domainUrl"
-				ng-disabled="project.status=='Completed'">
-		</div>
+			<div class="form-group">
+				<label for="Name">Project Name</label> <input type="text"
+					class="form-control form-wdth" id="projectname3"
+					ng-model="project.projectName" ng-disabled="true">
+			</div>
+
+			<div class="form-group">
+				<label for="Name">Project Url</label> <input type="text"
+					class="form-control form-wdth" id="projecturl"
+					ng-model="project.projectUrl"
+					ng-disabled="project.status=='Completed'">
+			</div>
 
 
-		<div class="form-group">
-			<button type="submit" class="btn btn-primary mb-2"
-				ng-click="submitProject('FinalSubmission')"
-				ng-disabled="project.status=='Completed'">Submit</button>
-		</div>
+			<div class="form-group">
+				<label for="Name">Code Url</label> <input type="text"
+					class="form-control form-wdth" id="domain"
+					ng-model="project.domainUrl"
+					ng-disabled="project.status=='Completed'">
+			</div>
 
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary mb-2"
+					ng-disabled="project.status=='Completed'">Submit</button>
+			</div>
+		</form>
 
 		</uib-tab> <uib-tab index="2" heading="Project Marks"
 			ng-click="viewProjectMarks()">
@@ -95,8 +118,6 @@
 		</div>
 
 		</uib-tab> </uib-tabset>
-
-
 
 
 	</div>

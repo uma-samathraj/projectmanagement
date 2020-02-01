@@ -126,6 +126,11 @@
 	/* opacity: $modal-backdrop-opacity; (SCSS) */
 }
 
+.login-margin{
+	
+	margin:30px 20px 20px 200px;
+}
+
 .btn-align {
 	margin-left: 20px;
 }
@@ -157,4 +162,43 @@
 	justify-content: center;
 	font-size: large;
 	font-family: -webkit-body;
+}
+
+.student-align{
+	
+  margin: 50px 10px 20px 0px;
+  padding: 0px 0px 0px 0px;	
+}
+
+.staff-align{
+	  margin: 50px 5px 5px 5px;
+}
+
+.menu-align{
+
+	margin-left:10px;
+}
+
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+   color : #686868;
+   background-color : #ccc;
+}
+
+form{
+	
+	margin-left:20px;
+}
+
+.pull-right{
+	float:right;
+}
+
+.dropdown-toggle{
+	color:white;
+}
+
+
+.bg-info {
+  background-color: #17b8b1 !important;
 }

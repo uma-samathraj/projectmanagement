@@ -33,7 +33,7 @@ public class StudentController {
 
 	@PutMapping(path = "/update")
 	public ApiResponse updateProject(@RequestBody Project project) {
-		return projectService.updateProject(project);
+		return projectService.saveProject(project);
 	}
 
 	@DeleteMapping(path = "/delete")
